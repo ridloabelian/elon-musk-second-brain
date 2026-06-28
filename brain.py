@@ -45,24 +45,62 @@ def retrieve(query, k=4):
         if score: scored.append((score, d))
     return [d for _, d in sorted(scored, reverse=True, key=lambda x: x[0])[:k]]
 
+def pick_model(base, key):
+    env_model = os.getenv("LOCAL_9ROUTER_MODEL")
+    if env_model and env_model != "auto":
+        return env_model
+    req = urllib.request.Request(
+        base.rstrip("/") + "/models",
+        headers={"Authorization": f"Bearer {key}"} if key else {},
+    )
+    data = json.loads(urllib.request.urlopen(req, timeout=30).read().decode())
+    ids = [m["id"] for m in data.get("data", [])]
+    for pref in ("SAIF", "AGENT-FAST", "CODER", "DEEP-REASON", "gpt-5.4-review"):
+        if pref in ids:
+            return pref
+    return ids[0] if ids else "SAIF"
+
+
 def call_llm(prompt):
     load_dotenv()
-    key = os.getenv("KIMI_API_KEY") or os.getenv("OPENAI_API_KEY")
-    base = os.getenv("KIMI_BASE_URL") or os.getenv("OPENAI_BASE_URL") or "https://api.moonshot.cn/v1"
-    model = os.getenv("KIMI_MODEL") or os.getenv("OPENAI_MODEL") or "kimi-k2.6"
-    if not key:
-        raise SystemExit("Missing API key. Set KIMI_API_KEY or OPENAI_API_KEY in env/.env")
+    key = os.getenv("LOCAL_9ROUTER_KEY") or os.getenv("API_KEY_SECRET") or os.getenv("OPENAI_API_KEY")
+    base = os.getenv("LOCAL_9ROUTER_BASE") or "http://localhost:20128/v1"
+    model = pick_model(base, key)
+
     data = json.dumps({
         "model": model,
         "messages": [{"role": "system", "content": SYSTEM}, {"role": "user", "content": prompt}],
         "temperature": 0.2,
     }).encode()
+
     req = urllib.request.Request(
         base.rstrip("/") + "/chat/completions",
         data=data,
-        headers={"Authorization": f"Bearer {key}", "Content-Type": "application/json"},
+        headers={"Authorization": f"Bearer {key}", "Content-Type": "application/json"} if key else {"Content-Type": "application/json"},
     )
-    res = json.loads(urllib.request.urlopen(req, timeout=60).read().decode())
+    
+    raw_res = urllib.request.urlopen(req, timeout=60).read().decode()
+    
+    # Handle SSE (Server-Sent Events) stream format
+    if "data: {" in raw_res:
+        content_parts = []
+        for line in raw_res.split("\n"):
+            line = line.strip()
+            if line.startswith("data: "):
+                payload = line[6:]
+                if payload == "[DONE]":
+                    continue
+                try:
+                    chunk = json.loads(payload)
+                    delta = chunk.get("choices", [{}])[0].get("delta", {})
+                    if "content" in delta:
+                        content_parts.append(delta["content"])
+                except Exception:
+                    pass
+        return "".join(content_parts)
+        
+    # Handle standard JSON response
+    res = json.loads(raw_res)
     return res["choices"][0]["message"]["content"]
 
 def ask(query):
