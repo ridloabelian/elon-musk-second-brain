@@ -1,14 +1,14 @@
-# Second Brain Elon Musk (Islamic Edition)
+# Second Brain Elon Musk
 
-Selamat datang di pusat komando taktis lu. Gunakan vault ini untuk mendobrak batasan dan tetap istiqomah.
+Selamat datang di pusat komando taktis lu. Gunakan vault ini untuk mendobrak batasan dan memaksimalkan output.
 
 ## Core Frameworks
 - [[First-Principles]] - Cara berpikir fisika.
-- [[10x-Urgency]] - Kecepatan eksekusi & target gila.
-- [[Rp-1-Triliun]] - Breakdown kalkulasi target Q1 2030.
+- [[10x-Urgency]] - Kecepatan eksekusi & target agresif.
+- [[Rp-1-Triliun]] - Breakdown kalkulasi target scale.
 
 ## Daily Protocols
-- [[Daily-Routine]] - Jam kerja Elon + Sholat & Mutabaah.
+- [[Daily-Routine]] - Jam kerja Elon & Time Blocking.
 
 ---
-*“Jika lu gak mau mati untuk bisnis ini, jangan mulai. Dan ingat, rizki sudah dijamin Allah. Tugas lu cuma menjemputnya dengan cara terbaik.”*
+*"If something is important enough, even if the odds are against you, you should still do it."*

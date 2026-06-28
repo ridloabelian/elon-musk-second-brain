@@ -1,19 +1,19 @@
-# Elon Musk Second Brain (Islamic Edition) 🧠⚡
+# Elon Musk Second Brain 🧠⚡
 
-Knowledge base dan decision framework open-source yang menggabungkan **First Principles Thinking** ala Elon Musk dengan **Islamic Worldview** (Taqwa & Mutabaah Yaumiyah).
+Knowledge base dan decision framework open-source yang menggabungkan **First Principles Thinking** dan **10x Execution** ala Elon Musk.
 
-Dirancang untuk eksekusi brutal, zero excuses, dan target 10x (contoh: Rp 1 Triliun), tapi 100% Halal.
+Dirancang untuk eksekusi brutal, zero excuses, dan target skala besar.
 
 ## 🚀 Filosofi
-1. **First Principles:** Break down problem ke basic physics.
+1. **First Principles:** Break down problem ke basic physics / fundamental truths.
 2. **Speed & Urgency:** Cost of delay > Cost of mistake.
-3. **Extreme Ownership:** Gak ada excuse.
-4. **Mutabaah Yaumiyah:** Sholat 5 waktu & dzikir adalah *fixed block* yang gak bisa dinegosiasi. Niatkan kekayaan Lillah.
+3. **Extreme Ownership:** Gak ada excuse. Hasil adalah satu-satunya indikator.
+4. **Time Blocking:** Penjadwalan super ketat (5-minute intervals) untuk efisiensi maksimal.
 
 ## 📂 Struktur Vault
 - `/Frameworks`: Model mental (First Principles, 10x Urgency).
-- `/Mutabaah`: Sistem rutinitas, time blocking, checklist harian.
-- `/Principles`: Target, anti-pattern (halal check), kalkulasi scale.
+- `/Routine`: Sistem rutinitas, time blocking, checklist harian.
+- `/Principles`: Target, anti-pattern, kalkulasi scale.
 
 ## 🛠 Penggunaan
 Vault ini adalah format Obsidian (`.md`).
