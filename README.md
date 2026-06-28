@@ -1,33 +1,36 @@
 # Elon Musk Second Brain 🧠⚡
 
-Knowledge base dan decision framework open-source yang menggabungkan **First Principles Thinking** dan **10x Execution** ala Elon Musk.
+Open-source Elon Musk-style second brain: **First Principles Thinking**, **10x Execution**, speed, scale, and brutal prioritization.
 
-Dirancang untuk eksekusi brutal, zero excuses, dan target skala besar.
-
-## 🚀 Filosofi
-1. **First Principles:** Break down problem ke basic physics / fundamental truths.
-2. **Speed & Urgency:** Cost of delay > Cost of mistake.
-3. **Extreme Ownership:** Gak ada excuse. Hasil adalah satu-satunya indikator.
-4. **Time Blocking:** Penjadwalan super ketat (5-minute intervals) untuk efisiensi maksimal.
-
-## 📂 Struktur Vault
-- `/Frameworks`: Model mental (First Principles, 10x Urgency).
-- `/Routine`: Sistem rutinitas, time blocking, checklist harian.
-- `/Principles`: Target, anti-pattern, kalkulasi scale.
-
-## 🛠 Penggunaan
-Vault ini adalah format Obsidian (`.md`).
-Bisa di-load langsung ke Obsidian, atau di-query lewat CLI.
+## Use
 
 ```bash
-# Query terminal sederhana
-python3 brain.py "first principles"
+# keyword-only retrieval, no API key
+python3 brain.py --search "first principles"
+
+# RAG mentor answer, needs KIMI_API_KEY or OPENAI_API_KEY
+cp .env.example .env
+python3 brain.py "gimana cara mikir first principles buat SaaS?"
 ```
 
-## 🤝 Kontribusi
-Pull Request dibuka untuk:
-- Penambahan mental model Elon (dengan referensi).
-- Integrasi RAG / LLM script (langchain/llama-index).
-- Prompt template persona.
+## Env
 
-**License:** MIT
+`brain.py` uses only Python stdlib. No LangChain. No dependency bloat.
+
+Supported env:
+- `KIMI_API_KEY`, `KIMI_BASE_URL`, `KIMI_MODEL`
+- or `OPENAI_API_KEY`, `OPENAI_BASE_URL`, `OPENAI_MODEL`
+
+## Vault
+
+- `Frameworks/First-Principles.md`
+- `Frameworks/10x-Urgency.md`
+- `Routine/Daily-Routine.md`
+- `Principles/Rp-1-Triliun.md`
+
+## Principle
+
+If it can be done with a few stdlib lines, don't install a framework.
+
+## License
+MIT
